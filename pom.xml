@@ -15,7 +15,7 @@
     <groupId>com.example</groupId>
     <artifactId>chatbot</artifactId>
     <version>1.0.0</version>
-    <name>Web-Based Chatbot</name>
+    <name>Web-Based Chatboot</name>
     <description>Web-based chatbot application using Spring Boot and Gemini API</description>
 
     <properties>
