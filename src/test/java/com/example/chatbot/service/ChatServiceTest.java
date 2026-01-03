@@ -1,20 +1,21 @@
 package com.example.chatbot.service;
 
-import com.example.chatbot.model.ChatResponse;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
+import java.io.IOException;
+
 import org.junit.jupiter.api.AfterAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.io.IOException;
+import com.example.chatbot.model.ChatResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
 
 public class ChatServiceTest {
 
@@ -46,7 +47,7 @@ public class ChatServiceTest {
 
     @Test
     void testGetChatResponse_Success() throws JsonProcessingException {
-        // Mock API Response
+        
         String jsonResponse = "{\n" +
                 "  \"candidates\": [\n" +
                 "    {\n" +
@@ -76,7 +77,7 @@ public class ChatServiceTest {
 
         ChatResponse response = chatService.getChatResponse("Hi");
 
-        // The service catches exceptions and returns an error message
+        
         assertTrue(response.getResponse().contains("Error"));
     }
 }

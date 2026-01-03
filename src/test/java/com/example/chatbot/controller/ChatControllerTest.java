@@ -1,17 +1,19 @@
 package com.example.chatbot.controller;
 
-import com.example.chatbot.model.ChatResponse;
-import com.example.chatbot.service.ChatService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.example.chatbot.model.ChatResponse;
+import com.example.chatbot.service.ChatService;
 
 public class ChatControllerTest {
 
@@ -51,7 +53,6 @@ public class ChatControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
-    // Stub class to replace Mockito mock to avoid Java 25 ByteBuddy incompatibility
     static class StubChatService extends ChatService {
         private String response;
 

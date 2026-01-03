@@ -84,7 +84,7 @@
         const navLinks = document.querySelectorAll('nav a');
         const sidebar = document.querySelector('.sidebar');
 
-        let isDarkMode = true; // Default is dark mode
+           let isDarkMode = true;
 
         function toggleTheme() {
             isDarkMode = !isDarkMode;
@@ -138,11 +138,9 @@
             }
         }
 
-        // ===== Clear Chat Functionality =====
         clearBtn.addEventListener('click', () => {
             if (chatMessages.children.length > 1) {
                 if (confirm('Are you sure you want to clear all messages?')) {
-                    // Keep only the welcome message
                     const welcomeMsg = chatMessages.querySelector('.welcome-message');
                     chatMessages.innerHTML = '';
                     if (welcomeMsg) {
@@ -156,28 +154,22 @@
             }
         });
 
-        // ===== Theme Toggle =====
         themeBtn.addEventListener('click', toggleTheme);
 
-        // ===== Attachment Button =====
         attachBtn.addEventListener('click', () => {
-            // Show file input dialog or feature notification
             showNotification('📎 File attachment feature coming soon!', 'info');
         });
 
-        // ===== Chat Form Submission =====
         chatForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const message = messageInput.value.trim();
             if (!message) return;
 
-            // Add user message
             addMessage(message, 'user');
             messageInput.value = '';
             setLoading(true);
 
-            // Show temporary loading bubble
             const loadingId = addLoadingBubble();
 
             try {
@@ -189,12 +181,9 @@
 
                 const data = await response.json();
                 
-                // Remove loading bubble
                 document.getElementById(loadingId)?.remove();
                 
-                // Add bot response
-                // Format plain text response gracefully
-                addMessage(data.response, 'bot');
+                    addMessage(data.response, 'bot');
             } catch (error) {
                 document.getElementById(loadingId)?.remove();
                 addMessage('Sorry, something went wrong. Please try again.', 'bot', true);
@@ -204,7 +193,6 @@
             }
         });
 
-        // ===== Helper Functions =====
         function addMessage(text, sender, isError = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}-message ${isError ? 'error-message' : ''}`;
@@ -216,7 +204,6 @@
             const contentDiv = document.createElement('div');
             contentDiv.className = 'message-content';
             
-            // Allow basic line breaks
             const formattedText = text.replace(/\n/g, '<br>');
             contentDiv.innerHTML = `<p>${formattedText}</p>`;
             
@@ -267,7 +254,7 @@
         }
 
         function showNotification(message, type = 'info') {
-            // Create notification element
+        
             const notification = document.createElement('div');
             notification.className = `notification notification-${type}`;
             notification.textContent = message;

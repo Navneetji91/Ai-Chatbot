@@ -33,7 +33,6 @@ body {
     width: 100%;
 }
 
-/* Sidebar */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -114,7 +113,6 @@ nav a:hover, nav a.active {
     color: #4ade80;
 }
 
-/* Chat Interface */
 .chat-interface {
     flex: 1;
     display: flex;
@@ -166,7 +164,6 @@ nav a:hover, nav a.active {
     color: var(--text-color);
 }
 
-/* Messages Area */
 .messages-area {
     flex: 1;
     overflow-y: auto;
@@ -317,7 +314,6 @@ input[type="text"] {
     margin-top: 10px;
 }
 
-/* Typing Indicator */
 .typing-indicator span {
     display: inline-block;
     width: 6px;
@@ -336,7 +332,6 @@ input[type="text"] {
     40% { transform: scale(1); }
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -354,7 +349,6 @@ input[type="text"] {
     background: #475569;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .sidebar {
         display: none;
@@ -370,7 +364,6 @@ input[type="text"] {
     }
 }
 
-/* Light Mode Theme */
 body.light-mode {
     --primary-color: #7c3aed;
     --primary-hover: #6d28d9;
